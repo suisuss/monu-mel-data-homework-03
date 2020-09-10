@@ -50,15 +50,16 @@ with open(csv_file_path) as csv_file:
         set_of_candidates_percentage_votes.update({ f"{key}": percentage})
 
     # Formatted output string.
+    #   - Could use `set_of_candidates_percentage_votes["Khan"][:6]` but round seems more appropriate
     output = f"""
 Election Results
 -------------------------
 Total Votes: {total_num_votes}
 -------------------------
-Khan: {str(set_of_candidates_percentage_votes["Khan"])[:6]}% ({set_of_candidates_total_votes["Khan"]})
-Correy: {str(set_of_candidates_percentage_votes["Correy"])[:6]}% ({set_of_candidates_total_votes["Correy"]})
-Li: {str(set_of_candidates_percentage_votes["Li"])[:6]}% ({set_of_candidates_total_votes["Li"]})
-O"Tooley: {str(set_of_candidates_percentage_votes["O'Tooley"])[:6]}% ({set_of_candidates_total_votes["O'Tooley"]})
+Khan: {round(set_of_candidates_percentage_votes["Khan"], 3)}% ({set_of_candidates_total_votes["Khan"]})
+Correy: {round(set_of_candidates_percentage_votes["Correy"], 3)}% ({set_of_candidates_total_votes["Correy"]})
+Li: {round(set_of_candidates_percentage_votes["Li"], 3)}% ({set_of_candidates_total_votes["Li"]})
+O"Tooley: {round(set_of_candidates_percentage_votes["O'Tooley"], 3)}% ({set_of_candidates_total_votes["O'Tooley"]})
 -------------------------
 Winner: {candidate_most_voted}
 -------------------------

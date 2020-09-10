@@ -27,7 +27,10 @@ with open(csv_file_path) as csv_file:
 
     # Calculations.
     total_profits_and_loses = sum(profits_and_loses)
-    average = total_profits_and_loses / total_num_of_months
+
+    delta_profit_and_loses = [profits_and_loses[i] - profits_and_loses[i-1] for i in range(1, len(profits_and_loses))]
+    average_delta_profit_and_loses = sum(delta_profit_and_loses)/ len(delta_profit_and_loses)
+
     greatest_increase = max(profits_and_loses)
     greatest_decrease = abs(min(profits_and_loses))
 
@@ -37,7 +40,7 @@ Financial Analysis
 ----------------------------
 Total Months: {total_num_of_months}
 Total: ${total_profits_and_loses}
-Average Change: ${average}
+Average Change: ${round(average_delta_profit_and_loses, 2)}
 Greatest Increase in Profits: {months[profits_and_loses.index(greatest_increase)]} (${greatest_increase})
 Greatest Decrease in Profits: {months[profits_and_loses.index(-greatest_decrease)]} (${greatest_decrease})
 '''
